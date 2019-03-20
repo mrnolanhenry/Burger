@@ -8,9 +8,15 @@
 <ul>
     {{#each burger}}
     <li>
-        <p>ID: {{this.id}}</p>
-        <p>Burger Name: {{this.burger_name}}</p>
-        <p>Devoured: {{this.devoured}}</p>
+        <p>
+            {{!-- {{this.id}}. {{this.burger_name}} --}}
+            {{!-- <p>Devoured: {{this.devoured}}</p> --}}
+            {{!-- <form action="/" method="PUT"> --}}
+            <form>
+            <span class="burgerID">{{this.id}}</span>. <span class = "devourable">{{this.burger_name}}</span>
+                <button class="devourBtn">Devour!</button>
+            </form>
+        </p>
     </li>
     {{/each}}
 </ul>
@@ -25,21 +31,24 @@
 
 <script type="text/javascript">
 
-  $("#submitBtn").on("submit", function(event) {
-    event.preventDefault();
+    $(".devourBtn").on("click", function (event) {
+        event.preventDefault();
+        let thisBurgerNameSpan = $(this).parent().find($(".devourable"));
+        let thisBurgerIDSpan = $(this).parent().find($(".burgerID"));
+        let thisBurgerID = thisBurgerIDSpan[0].innerText;
+        let thisBurgerName = thisBurgerNameSpan[0].innerText;
+        console.log(thisBurgerID, thisBurgerName);
 
-    var newBurger = {
-      burger_name: $("#submitField").val().trim()
-    };
+         var newBurger = {
+            id: thisBurgerID
+         };
 
-    // Send the POST request.
-    $.ajax("/", {
-      type: "POST",
-      data: newBurger
-    }).then(
-      function() {
-          
-      }
-    );
-  });
+            $.ajax("/", {
+                type: "PUT",
+                data: newBurger
+            }).then(
+                function () {
+                }
+            );
+    });
 </script>
