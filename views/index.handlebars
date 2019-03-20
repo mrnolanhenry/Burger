@@ -5,21 +5,29 @@
 <h3>Eat A Burger</h3>
 
 <h6>Enter the name of a burger you'd like to eat and hit "Submit"</h6>
-<ul>
-    {{#each burger}}
-    <li>
-        <p>
-            {{!-- {{this.id}}. {{this.burger_name}} --}}
-            {{!-- <p>Devoured: {{this.devoured}}</p> --}}
-            {{!-- <form action="/" method="PUT"> --}}
-            <form>
-            <span class="burgerID">{{this.id}}</span>. <span class = "devourable">{{this.burger_name}}</span>
-                <button class="devourBtn">Devour!</button>
-            </form>
-        </p>
-    </li>
-    {{/each}}
-</ul>
+
+<div class="devourableBurgers">
+    <ul>
+        {{#each burger}}
+        {{#unless this.devoured}}
+        <li>
+            <p>
+                {{!-- {{this.id}}. {{this.burger_name}} --}}
+                {{!-- <p>Devoured: {{this.devoured}}</p> --}}
+                {{!-- <form action="/" method="PUT"> --}}
+                <form>
+                    <span id="burger{{this.id}}">
+                        <span class="burgerID"> {{this.id}}</span>.
+                        <span class="devourable">{{this.burger_name}}</span>
+                        <button class="devourBtn">Devour!</button>
+                    </span>
+                </form>
+            </p>
+        </li>
+        {{/unless}}
+        {{/each}}
+    </ul>
+</div>
 
 <div>
     <form action="/" method="POST">
@@ -27,6 +35,27 @@
 
         <button type="submit" id="submitBtn">Submit</button>
     </form>
+</div>
+
+<div class="devouredBurgers">
+    <ul>
+        {{#each burger}}
+        {{#if this.devoured}}
+        <li>
+            <p>
+                {{!-- {{this.id}}. {{this.burger_name}} --}}
+                {{!-- <p>Devoured: {{this.devoured}}</p> --}}
+                {{!-- <form action="/" method="PUT"> --}}
+                <span id="burger{{this.id}}">
+                    <span class="burgerID"> {{this.id}}</span>.
+                    <span class="devoured">{{this.burger_name}}</span>
+                </span>
+            </p>
+        </li>
+        {{/if}}
+        {{/each}}
+    </ul>
+
 </div>
 
 <script type="text/javascript">
@@ -39,16 +68,16 @@
         let thisBurgerName = thisBurgerNameSpan[0].innerText;
         console.log(thisBurgerID, thisBurgerName);
 
-         var newBurger = {
+        var newBurger = {
             id: thisBurgerID
-         };
+        };
 
-            $.ajax("/", {
-                type: "PUT",
-                data: newBurger
-            }).then(
-                function () {
-                }
-            );
+        $.ajax("/", {
+            type: "PUT",
+            data: newBurger
+        }).then(
+            function () {
+            }
+        );
     });
 </script>

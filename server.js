@@ -31,15 +31,6 @@
 
 //    * Close out of the MySQL command line tool: `exit`.
 
-// #### Config Setup
-
-//    * In the `orm.js` file, create the methods that will execute the necessary MySQL commands in the controllers. These are the methods you will need to use in order to retrieve and store data in your database.
-
-//      * `selectAll()`
-//      * `insertOne()`
-//      * `updateOne()`
-
-//    * Export the ORM object in `module.exports`.
 
 // #### Model setup
 
@@ -49,22 +40,6 @@
 
 //     * Export at the end of the `burger.js` file.
 
-// #### Controller setup
-
-// 3. Inside the `burgers_controller.js` file, import the following:
-
-//    * Express
-//    * `burger.js`
-
-// 4. Create the `router` for the app, and export the `router` at the end of your file.
-
-// #### View setup
-
-//      * Setup the `main.handlebars` file so it's able to be used by Handlebars.
-
-//      * Setup the `index.handlebars` to have the template that Handlebars can render onto.
-
-//      * Create a button in `index.handlebars` that will submit the user input into the database.
 
 
 let express = require("express");
