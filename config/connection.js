@@ -1,4 +1,11 @@
-// * Inside the `connection.js` file, setup the code to connect Node to MySQL.
+let mysql = require('mysql');
 
-// * Export the connection.
+let connection = mysql.createConnection({
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: "password",
+    database: "burgers_db"
+});
 
+module.exports = connection;

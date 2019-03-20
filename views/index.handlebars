@@ -1,3 +1,45 @@
-     {{!-- * Setup the `index.handlebars` to have the template that Handlebars can render onto.
+{{!-- * Setup the `index.handlebars` to have the template that Handlebars can render onto.
 
      * Create a button in `index.handlebars` that will submit the user input into the database. --}}
+
+<h3>Eat A Burger</h3>
+
+<h6>Enter the name of a burger you'd like to eat and hit "Submit"</h6>
+<ul>
+    {{#each burger}}
+    <li>
+        <p>ID: {{this.id}}</p>
+        <p>Burger Name: {{this.burger_name}}</p>
+        <p>Devoured: {{this.devoured}}</p>
+    </li>
+    {{/each}}
+</ul>
+
+<div>
+    <form action="/" method="POST">
+        <textarea type="text" id="submitField" name="burger"></textarea>
+
+        <button type="submit" id="submitBtn">Submit</button>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+  $("#submitBtn").on("submit", function(event) {
+    event.preventDefault();
+
+    var newBurger = {
+      burger_name: $("#submitField").val().trim()
+    };
+
+    // Send the POST request.
+    $.ajax("/", {
+      type: "POST",
+      data: newBurger
+    }).then(
+      function() {
+          
+      }
+    );
+  });
+</script>

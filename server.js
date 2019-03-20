@@ -13,6 +13,7 @@
 // * [Check out this video of the app for a run-through of how it works](https://youtu.be/msvdn95x9OM).
 
 
+// -----------------------------------------------------------------------------------------
 
 // #### DB Setup
 
@@ -32,14 +33,6 @@
 
 // #### Config Setup
 
-//    * Inside the `connection.js` file, setup the code to connect Node to MySQL.
-
-//    * Export the connection.
-
-// 3. Create an `orm.js` file inside `config` directory.
-
-//    * Import (require) `connection.js` into `orm.js`
-
 //    * In the `orm.js` file, create the methods that will execute the necessary MySQL commands in the controllers. These are the methods you will need to use in order to retrieve and store data in your database.
 
 //      * `selectAll()`
@@ -50,10 +43,6 @@
 
 // #### Model setup
 
-// * Inside your `burger` directory, create a folder named `models`.
-
-//   * In `models`, make a `burger.js` file.
-
 //     * Inside `burger.js`, import `orm.js` into `burger.js`
 
 //     * Also inside `burger.js`, create the code that will call the ORM functions using burger specific input for the ORM.
@@ -61,10 +50,6 @@
 //     * Export at the end of the `burger.js` file.
 
 // #### Controller setup
-
-// 1. Inside your `burger` directory, create a folder named `controllers`.
-
-// 2. In `controllers`, create the `burgers_controller.js` file.
 
 // 3. Inside the `burgers_controller.js` file, import the following:
 
@@ -74,14 +59,6 @@
 // 4. Create the `router` for the app, and export the `router` at the end of your file.
 
 // #### View setup
-
-// 1. Inside your `burger` directory, create a folder named `views`.
-
-//    * Create the `index.handlebars` file inside `views` directory.
-
-//    * Create the `layouts` directory inside `views` directory.
-
-//      * Create the `main.handlebars` file inside `layouts` directory.
 
 //      * Setup the `main.handlebars` file so it's able to be used by Handlebars.
 
@@ -93,13 +70,18 @@
 let express = require("express");
 
 let app = express();
-let PORT = process.env.PORT || 8080;
+let PORT = process.env.PORT || 4000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// require("./app/routing/apiRoutes")(app);
-// require("./app/routing/htmlRoutes")(app);
+
+let exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+require("./controllers/burgers_controllers")(app);
 
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
