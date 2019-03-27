@@ -1,73 +1,49 @@
-<h3>Eat A Burger</h3>
+<div class="container-fluid">
 
-<h6>Enter the name of a burger you'd like to eat and hit "Submit"</h6>
-<br>
-<br>
+    <div class="row-center">
+        <h3>Eat A Burger</h3>
+        <img src="/assets/img/burger.jpg" class="img burger" />
+    </div>
+    <br>
+    <br>
 
-<h4>Burgers that are not devoured!</h4>
+    <div class="row">
+        
+            <div class="col-6 col-plate">
+                <div class="container-fluid">
+                <h4>Burgers on your plate!</h4>
 
-<ul>
-  {{#each burger}}
-    {{#unless this.devoured}}
-      {{> burgers/burger-block devoured=false}}
-    {{/unless}}
-  {{/each}}
-</ul>
+                <ul>
+                    {{#each burger}}
+                    {{#unless this.devoured}}
+                    {{> burgers/burger-block devoured=false}}
+                    {{/unless}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
 
-<h4>Burgers that are devoured!</h4>
+            <div class="col-6 col-stomach">
+                <div class="container-fluid">
+                <h4>Burgers in your belly!</h4>
 
-<ul>
-  {{#each burger}}
-    {{#if this.devoured}}
-      {{> burgers/burger-block devoured=true}}
-    {{/if}}
-  {{/each}}
-</ul>
+                <ul>
+                    {{#each burger}}
+                    {{#if this.devoured}}
+                    {{> burgers/burger-block devoured=true}}
+                    {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
 
-
-{{!-- 
-<div class="devourableBurgers">
-    <ul>
-        {{#each burger}}
-        {{#unless this.devoured}}
-        <li>
-            <p>
-                <form>
-                    <span id="burger{{this.id}}">
-                        <span class="burgerID"> {{this.id}}</span>.
-                        <span class="devourable">{{this.burger_name}}</span>
-                        <button class="devourBtn">Devour!</button>
-                    </span>
-                </form>
-            </p>
-        </li>
-        {{/unless}}
-        {{/each}}
-    </ul>
-</div> --}}
-
-{{!-- <div class="devouredBurgers">
-    <ul>
-        {{#each burger}}
-        {{#if this.devoured}}
-        <li>
-            <p>
-                <span id="burger{{this.id}}">
-                    <span class="burgerID"> {{this.id}}</span>.
-                    <span class="devoured">{{this.burger_name}}</span>
-                </span>
-            </p>
-        </li>
-        {{/if}}
-        {{/each}}
-    </ul>
-
-</div> --}}
-
-<div>
-    <form action="/api/burgers" method="POST">
-        <textarea type="text" id="submitField" name="burger"></textarea>
-
-        <button type="submit" id="submitBtn">Submit</button>
-    </form>
+    <div>
+        <form action="/api/burgers" method="POST">
+            <h6>Enter the name of a burger you'd like to eat and hit "Submit"</h6>
+            <textarea type="text" id="submitField" name="burger"></textarea>
+            <br>
+            <button type="submit" id="submitBtn">Submit</button>
+        </form>
+    </div>
 </div>

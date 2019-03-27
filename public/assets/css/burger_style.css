@@ -1,0 +1,36 @@
+button {
+    color: blue;
+}
+
+.img.burger {
+    width: 100px;
+    height: 100px;
+}
+
+div {
+    border: black solid 1px;
+}
+
+body {
+    /* background-image: url("../images/rotj_001.jpg"); */
+    /* background-color: yellow !important; */
+    /* background-repeat: repeat; */
+    box-sizing: border-box;
+    font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+    /* color: yellow !important; */
+    text-align: center !important;
+}
+
+.col-plate {
+    background-image: url("/assets/img/plate.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+.col-stomach {
+    background-image: url("/assets/img/stomach.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
