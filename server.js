@@ -12,26 +12,6 @@
 
 // * [Check out this video of the app for a run-through of how it works](https://youtu.be/msvdn95x9OM).
 
-
-// -----------------------------------------------------------------------------------------
-
-// #### DB Setup
-
-// 4. Run the `schema.sql` and `seeds.sql` files into the mysql server from the command line
-
-// 5. Now you're going to run these SQL files.
-
-//    * Make sure you're in the `db` folder of your app.
-
-//    * Start MySQL command line tool and login: `mysql -u root -p`.
-
-//    * With the `mysql>` command line tool running, enter the command `source schema.sql`. This will run your schema file and all of the queries in it -- in other words, you'll be creating your database.
-
-//    * Now insert the entries you defined in `seeds.sql` by running the file: `source seeds.sql`.
-
-//    * Close out of the MySQL command line tool: `exit`.
-
-
 // #### Model setup
 
 //     * Inside `burger.js`, import `orm.js` into `burger.js`
@@ -47,6 +27,8 @@ let express = require("express");
 let app = express();
 let PORT = process.env.PORT || 4000;
 
+app.use(express.static("public"));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -61,3 +43,10 @@ require("./controllers/burgers_controllers")(app);
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
+
+
+
+// var routes = require("./controllers/catsController.js");
+
+// app.use(routes);
+

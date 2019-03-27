@@ -3,7 +3,7 @@ let app = express();
 
 let burger = require("../models/burger");
 
-let orm = require("../config/orm");
+// let orm = require("../config/orm");
 
 module.exports = function (app) {
 
@@ -13,28 +13,38 @@ module.exports = function (app) {
             res.render("index", { burger: argument });
             // console.log(argument);
         }
-            orm.selectAll(cb);
+        burger.selectAll(cb);
 
     });
 
-    app.post("/", function (req, res) {
-        console.log('You sent, ' + req.body.burger);
+    app.post("/api/burgers", function (req, res) {
+        console.log('You submitted ' + req.body.burger);
 
         let cb = function() {
             res.redirect("/");
         }
-        orm.insertOne(req.body.burger,cb);
+        burger.insertOne("burger_name","devoured",req.body.burger,cb);
     });
 
-    app.put("/", function (req,res) {
+    app.put("/api/burgers/:id", function (req,res) {
         console.log("You devoured burger with id= " + req.body.id);
 
-        let cb = function() {
+        let cb = function(result) {
+            console.log(result);
+            console.log("made it this far!")
             // res.redirect("/");
+                if (result.changedRows == 0) {
+                  // If no rows were changed, then the ID must not exist, so 404
+                  return res.status(404).end();
+                } else {
+                  res.status(200).end();
+                }
         }
-        orm.updateOne(req.body.id,cb);
+        burger.updateOne("devoured",true,req.body.id,cb);
 
     })
+
+
 }
 
 
