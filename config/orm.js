@@ -36,8 +36,8 @@ let orm = {
 
     updateOne: function (table,col,val, id, cb) {
         let queryString = "UPDATE " + table;
-        queryString += " SET " + col + " = " + val + " WHERE ?"
-        console.log(queryString);
+        queryString += " SET " + col + " = " + val + " WHERE ?";
+
         connection.query(queryString,
             { id: id },
             function (err, res, fields) {
