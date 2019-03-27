@@ -1,9 +1,5 @@
 let connection = require("./connection");
 
-connection.connect(function (err) {
-    if (err) throw err;
-});
-
 let orm = {
     selectAll: function (table,cb) {
         let queryString = "SELECT * FROM " + table;
