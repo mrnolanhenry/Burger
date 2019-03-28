@@ -1,6 +1,6 @@
 # Burger
 
-App which uses A MVC framework to allow users to create and "eat" burgers which updates the database.
+App which uses an MVC framework to allow users to create and "eat" burgers which updates the database.
 
 Deployed at:
 https://murmuring-inlet-95809.herokuapp.com/
