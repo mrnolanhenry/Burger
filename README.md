@@ -6,7 +6,6 @@ Deployed at:
 https://murmuring-inlet-95809.herokuapp.com/
 
 Built using: 
-MySQL, Node, Express, Handlebars
   - jQuery
   - Bootstrap
   - MySQL
