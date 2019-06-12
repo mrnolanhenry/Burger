@@ -1,2 +1,14 @@
 # Burger
-Assignment using  MySQL, Node, Express, Handlebars
+
+App which uses an MVC framework to allow users to create and "eat" burgers which updates the database.
+
+Deployed at:
+https://murmuring-inlet-95809.herokuapp.com/
+
+Built using: 
+  - jQuery
+  - Bootstrap
+  - MySQL
+  - Node
+  - Express
+  - Express-Handlebars
